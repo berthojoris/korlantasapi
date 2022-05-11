@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/operations', 'GameController@index');
+Route::apiResource('operation', OperationController::class);
+Route::apiResource('daily', DailyController::class);

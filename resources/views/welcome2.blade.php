@@ -22,7 +22,7 @@
   font-family: Arial Black;
   dominant-baseline: central;
   text-anchor: middle;
-}</style></svg> v{{ Illuminate\Foundation\Application::VERSION }}
+}</style></svg> <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px;">v{{ Illuminate\Foundation\Application::VERSION }}</span>
     </div>
 </body>
 </html>

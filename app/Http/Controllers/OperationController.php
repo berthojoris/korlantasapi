@@ -15,7 +15,9 @@ class OperationController extends Controller
      */
     public function index()
     {
-        //
+        return [
+            'msg' => 'Welcome Sislapops API v1'
+        ];
     }
 
     /**

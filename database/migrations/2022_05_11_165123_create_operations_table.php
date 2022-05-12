@@ -17,7 +17,7 @@ class CreateOperationsTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('operation_name');
-            $table->string('alias');
+            $table->string('slug');
             $table->date('start');
             $table->date('end');
             $table->string('status')->default('active');

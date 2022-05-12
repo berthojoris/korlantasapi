@@ -14,7 +14,7 @@ class PoldaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'polda_name' => $this->faker->unique()->cityPrefix(),
         ];
     }
 }

@@ -15,9 +15,9 @@ class OperationController extends Controller
      */
     public function index()
     {
-        return [
-            'msg' => 'Welcome Sislapops API v1'
-        ];
+        $data = Operation::latest()->get();
+
+        return $data;
     }
 
     /**
@@ -49,7 +49,7 @@ class OperationController extends Controller
      */
     public function show(Operation $operation)
     {
-        //
+        return $operation;
     }
 
     /**

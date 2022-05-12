@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::apiResource('polda', PoldaController::class);
 Route::apiResource('operation', OperationController::class);
 Route::apiResource('daily', DailyController::class);

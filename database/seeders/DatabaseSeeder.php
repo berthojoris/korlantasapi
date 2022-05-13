@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Daily;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,5 +48,21 @@ class DatabaseSeeder extends Seeder
         ];
 
         Daily::insert($insert);
+
+        User::create([
+            'name' => 'Bertho',
+            'email' => 'berthojoris@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('malaquena'),
+            'access' => 'administrator',
+        ]);
+
+        User::create([
+            'name' => 'Paul',
+            'email' => 'pauljoris@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('malaquena'),
+            'access' => 'user',
+        ]);
     }
 }

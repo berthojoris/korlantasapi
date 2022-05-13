@@ -46,13 +46,6 @@ class DailyController extends Controller
      */
     public function store(StoreDailyRequest $request)
     {
-        // $count = Daily::whereDate('created_at', Carbon::now())
-        //     ->where('polda_id', $request->polda_id)
-        //     ->where('operation_id', $request->operation_id)
-        //     ->count();
-
-        return $request->all();
-
         if($count == 0) {
             Daily::create($request->all());
             return [

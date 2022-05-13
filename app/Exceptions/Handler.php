@@ -49,7 +49,8 @@ class Handler extends ExceptionHandler
         $this->renderable(function (ValidationException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'msg' => $e->getMessage(),
+                    'msg' => 'Validation error',
+                    'error' => $e->errors()
                 ], 500);
             }
         });
@@ -57,7 +58,7 @@ class Handler extends ExceptionHandler
         $this->renderable(function (MethodNotAllowedHttpException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'msg' => $e->getMessage()
+                    'msg' => $e->getMessage(),
                 ], 500);
             }
         });

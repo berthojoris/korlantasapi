@@ -37,7 +37,7 @@ class StoreDailyRequest extends FormRequest
                 'required',
                 'integer',
                 'exists:poldas,id',
-                new PreventDoubleSubmit()
+                new PreventDoubleSubmit(request('operation_id'))
             ],
             'operation_id' => 'required|integer|exists:operations,id',
             'tilang' => 'required|numeric',

@@ -46,18 +46,11 @@ class DailyController extends Controller
      */
     public function store(StoreDailyRequest $request)
     {
-        if($count == 0) {
-            Daily::create($request->all());
-            return [
-                "msg" => "Data created"
-            ];
-        } else {
-            return [
-                "msg" => "You have submitted data today"
-            ];
-        }
-
-
+        Daily::create($request->all());
+        return [
+            "msg" => "Data created",
+            "error" => null
+        ];
     }
 
     /**

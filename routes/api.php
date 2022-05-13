@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DailyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::apiResource('polda', PoldaController::class);
-Route::apiResource('operation', OperationController::class);
-Route::apiResource('daily', DailyController::class);
+Route::get('daily/submited', [DailyController::class, 'submitToday']);
+
+Route::apiResource('polda', 'PoldaController');
+Route::apiResource('operation', 'OperationController');
+Route::apiResource('daily', 'DailyController');

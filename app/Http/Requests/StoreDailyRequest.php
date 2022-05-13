@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Str;
+use App\Rules\PreventDoubleSubmit;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreDailyRequest extends FormRequest
@@ -13,7 +15,14 @@ class StoreDailyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'uuid' => Str::uuid(),
+        ]);
     }
 
     /**
@@ -24,7 +33,16 @@ class StoreDailyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'polda_id' => [
+                'required',
+                'integer',
+                'exists:poldas,id',
+                new PreventDoubleSubmit()
+            ],
+            'operation_id' => 'required|integer|exists:operations,id',
+            'tilang' => 'required|numeric',
+            'teguran' => 'required|numeric',
+            'kecelakaan' => 'required|numeric',
         ];
     }
 }

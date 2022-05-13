@@ -14,11 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome2');
+    return view('welcome');
 });
-
-Route::get('/games', 'GameController@index');
-Route::post('/games/add', 'GameController@add');
-Route::post('/games/delete', 'GameController@delete');
-Route::post('/games/edit', 'GameController@edit');
-Route::post('/games/select', 'GameController@select');

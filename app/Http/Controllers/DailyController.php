@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daily;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreDailyRequest;
 use App\Http\Requests\UpdateDailyRequest;
 
@@ -15,7 +16,16 @@ class DailyController extends Controller
      */
     public function index()
     {
-        //
+        $data = Daily::latest()->get();
+
+        return $data;
+    }
+
+    public function submitToday()
+    {
+        $data = Daily::with('polda', 'operation')->whereDate('created_at', Carbon::now())->get();
+
+        return $data;
     }
 
     /**
@@ -36,7 +46,25 @@ class DailyController extends Controller
      */
     public function store(StoreDailyRequest $request)
     {
-        //
+        // $count = Daily::whereDate('created_at', Carbon::now())
+        //     ->where('polda_id', $request->polda_id)
+        //     ->where('operation_id', $request->operation_id)
+        //     ->count();
+
+        return $request->all();
+
+        if($count == 0) {
+            Daily::create($request->all());
+            return [
+                "msg" => "Data created"
+            ];
+        } else {
+            return [
+                "msg" => "You have submitted data today"
+            ];
+        }
+
+
     }
 
     /**
@@ -47,7 +75,7 @@ class DailyController extends Controller
      */
     public function show(Daily $daily)
     {
-        //
+        return $daily;
     }
 
     /**

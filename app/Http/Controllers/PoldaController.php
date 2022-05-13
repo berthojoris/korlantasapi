@@ -15,7 +15,9 @@ class PoldaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Polda::latest()->get();
+
+        return $data;
     }
 
     /**
@@ -47,7 +49,7 @@ class PoldaController extends Controller
      */
     public function show(Polda $polda)
     {
-        //
+        return $polda;
     }
 
     /**

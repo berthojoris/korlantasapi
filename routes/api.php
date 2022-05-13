@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DailyController;
 
 /*
@@ -19,8 +20,14 @@ use App\Http\Controllers\DailyController;
 //     return $request->user();
 // });
 
-Route::get('daily/submited', [DailyController::class, 'submitToday']);
+Route::post('token', [AuthController::class, 'getTokenAuth']);
 
-Route::apiResource('polda', 'PoldaController');
-Route::apiResource('operation', 'OperationController');
-Route::apiResource('daily', 'DailyController');
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('daily/submited', [DailyController::class, 'submitToday']);
+    Route::apiResource('polda', 'PoldaController');
+    Route::apiResource('operation', 'OperationController');
+    Route::apiResource('daily', 'DailyController');
+
+    Route::post('user', [AuthController::class, 'getUserLogin']);
+    Route::post('user/logout', [AuthController::class, 'logout']);
+});
